@@ -1,14 +1,14 @@
 import React from 'react';
 
 
-class ContactPage extends React.Component {
+class Home extends React.Component {
   render() {
     return (
       <div className="jumbotron">
-        <h1>This is contact page</h1>
+        <h1>This is homepage</h1>
       </div>
     );
   }
 }
 
-export default ContactPage;
+export default Home;

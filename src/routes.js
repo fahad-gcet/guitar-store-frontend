@@ -2,13 +2,13 @@ import React from 'react';
 import {Route, IndexRoute} from 'react-router';
 
 import App from './components/App';
-import HomePage from './components/home/HomePage';
-import ContactPage from './components/contact/ContactPage';
+import Home from './components/home/Home';
+import Contact from './components/contact/Contact';
 
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={HomePage}/>
-    <Route path="contact" component={ContactPage}/>
+    <IndexRoute component={Home}/>
+    <Route path="contact" component={Contact}/>
   </Route>
 );

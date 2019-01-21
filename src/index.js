@@ -5,7 +5,8 @@ import {Router, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import routes from './routes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import configureStore from './store';
+import './styles/app.css';
+import configureStore from './store/configureStore'; // eslint-disable-line import/default
 
 const store = configureStore();
 

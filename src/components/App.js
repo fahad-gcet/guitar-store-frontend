@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
 
-import Header from './common/Header';
+import TopBar from './topbar/TopBar';
 
 
 class App extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <Header/>
+        <TopBar/>
         {this.props.children}
       </div>
     );
