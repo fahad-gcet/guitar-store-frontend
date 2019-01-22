@@ -2,12 +2,58 @@ import React, {PropTypes} from 'react';
 import {IndexLink, Link} from 'react-router';
 
 import {APP_NAME} from '../../config';
+import Search from './Search';
+
 
 const TopBar = () => (
   <div>
-    <span>
-      <Link to="/">{APP_NAME}</Link>
-    </span>
+    <nav
+      className="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+      <div className="container">
+
+        {/*Brand*/}
+        <IndexLink className="navbar-brand waves-effect" to="/"><strong
+          className="blue-text">{APP_NAME}</strong></IndexLink>
+
+        {/*Collapse*/}
+        <button className="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/*Links*/}
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          {/*Left*/}
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <IndexLink className="nav-link waves-effect"
+                         to="/" activeClassName="active">Home</IndexLink>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link waves-effect"
+                    to="/contact" activeClassName="active">Contact</Link>
+            </li>
+          </ul>
+
+          <Search/>
+
+          {/*Right*/}
+          <ul className="navbar-nav nav-flex-icons">
+            <li className="nav-item">
+              <a className="nav-link waves-effect">
+                <span className="badge red z-depth-1 mr-1"> 1 </span>
+                <i className="fas fa-shopping-cart"></i>
+                <span
+                  className="clearfix d-none d-sm-inline-block"> Cart </span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
   </div>
 );
 
