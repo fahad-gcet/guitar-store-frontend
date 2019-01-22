@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import TopBar from './topbar/TopBar';
+import Footer from './footer/Footer';
 
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
             {this.props.children}
           </div>
         </main>
+        <Footer/>
       </div>
     );
   }

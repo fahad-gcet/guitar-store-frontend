@@ -15,13 +15,13 @@ class SingleProduct extends React.Component {
           <div className="col-md-6 mb-4">
             <div className="p-4">
               <div className="mb-3">
-                <a href="">
+                <a href="#">
                   <span className="badge purple mr-1">Category 2</span>
                 </a>
-                <a href="">
+                <a href="#">
                   <span className="badge blue mr-1">New</span>
                 </a>
-                <a href="">
+                <a href="#">
                   <span className="badge red mr-1">Bestseller</span>
                 </a>
               </div>
@@ -39,18 +39,22 @@ class SingleProduct extends React.Component {
                 dolor suscipit libero eos atque quia ipsa sint voluptatibus!
                 Beatae sit assumenda asperiores iure at maxime atque
                 repellendus
+                maiores quia sapiente.Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Et
+                dolor suscipit libero eos atque quia ipsa sint voluptatibus!
+                Beatae sit assumenda asperiores iure at maxime atque
+                repellendus
                 maiores quia sapiente.</p>
 
-              <form className="d-flex justify-content-left">
-                <input type="number" value="1" aria-label="Search"
-                       className="form-control"/>
-                <button className="btn btn-primary btn-md my-0 p"
-                        type="submit">Add
-                  to cart
-                  <i className="fas fa-shopping-cart ml-1"></i>
-                </button>
+              {/*<form className="d-flex justify-content-left">*/}
+              <input type="number" value="1" aria-label="Search"
+                     className="form-control"/>
+              <button className="btn btn-primary btn-md my-0 p">Add
+                to cart
+                <i className="fas fa-shopping-cart ml-1"></i>
+              </button>
 
-              </form>
+              {/*</form>*/}
 
             </div>
 
@@ -64,7 +68,13 @@ class SingleProduct extends React.Component {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
               suscipit modi sapiente illo soluta odit voluptates,
               quibusdam officia. Neque quibusdam quas a quis porro? Molestias
-              illo neque eum in laborum.</p>
+              illo neque eum in laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+              suscipit modi sapiente illo soluta odit voluptates,
+              quibusdam officia. Neque quibusdam quas a quis porro? Molestias
+              illo neque eum in laborumLorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+              suscipit modi sapiente illo soluta odit voluptates,
+              quibusdam officia. Neque quibusdam quas a quis porro? Molestias
+              illo neque eum in laborum</p>
           </div>
         </div>
       </div>
