@@ -1,6 +1,8 @@
 import React from 'react';
+import {MDBInput} from "mdbreact";
 
-class Search extends React.Component {
+
+class ProductSearchForm extends React.Component {
   render() {
     return (
       <form className="form-inline">
@@ -13,4 +15,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default ProductSearchForm;

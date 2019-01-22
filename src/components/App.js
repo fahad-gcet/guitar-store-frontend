@@ -9,7 +9,11 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         <TopBar/>
-        {this.props.children}
+        <main>
+          <div className="container">
+            {this.props.children}
+          </div>
+        </main>
       </div>
     );
   }
