@@ -1,6 +1,20 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as cartActions from '../../actions/cartActions';
+
 
 class SingleProduct extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.addProductToCart = this.addProductToCart.bind(this);
+  }
+
+  addProductToCart(event) {
+    this.props.actions.addProductToCart();
+  }
+
   render() {
     return (
       <div>
@@ -49,7 +63,8 @@ class SingleProduct extends React.Component {
               {/*<form className="d-flex justify-content-left">*/}
               <input type="number" value="1" aria-label="Search"
                      className="form-control"/>
-              <button className="btn btn-primary btn-md my-0 p">Add
+              <button onClick={this.addProductToCart}
+                      className="btn btn-primary btn-md my-0 p">Add
                 to cart
                 <i className="fas fa-shopping-cart ml-1"></i>
               </button>
@@ -68,10 +83,12 @@ class SingleProduct extends React.Component {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
               suscipit modi sapiente illo soluta odit voluptates,
               quibusdam officia. Neque quibusdam quas a quis porro? Molestias
-              illo neque eum in laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+              illo neque eum in laborum. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Natus
               suscipit modi sapiente illo soluta odit voluptates,
               quibusdam officia. Neque quibusdam quas a quis porro? Molestias
-              illo neque eum in laborumLorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+              illo neque eum in laborumLorem ipsum dolor sit amet consectetur
+              adipisicing elit. Natus
               suscipit modi sapiente illo soluta odit voluptates,
               quibusdam officia. Neque quibusdam quas a quis porro? Molestias
               illo neque eum in laborum</p>
@@ -82,5 +99,21 @@ class SingleProduct extends React.Component {
   }
 }
 
+SingleProduct.propTypes = {
+  actions: PropTypes.object.isRequired
+};
 
-export default SingleProduct;
+function mapStateToProps(state, ownProps) {
+  return {
+    cartCount: 99
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(cartActions, dispatch)
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct);

@@ -6,6 +6,11 @@ import * as cartActions from '../../actions/cartActions';
 
 
 class CartIcon extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+  }
+
   render() {
     return (
       <Link to="/cart" className="nav-link waves-effect">

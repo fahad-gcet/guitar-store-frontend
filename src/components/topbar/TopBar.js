@@ -43,7 +43,7 @@ const TopBar = () => (
           {/*Right*/}
           <ul className="navbar-nav nav-flex-icons">
             <li className="nav-item">
-              <CartIcon/>
+              <CartIcon cartCount={0}/>
             </li>
           </ul>
 
