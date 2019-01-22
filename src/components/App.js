@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Spinner} from '@chevtek/react-spinners';
+
 
 import TopBar from './topbar/TopBar';
 import Footer from './footer/Footer';
@@ -16,6 +18,9 @@ class App extends React.Component {
           </div>
         </main>
         <Footer/>
+        <Spinner name="mySpinner">
+          Loading...
+        </Spinner>
       </div>
     );
   }

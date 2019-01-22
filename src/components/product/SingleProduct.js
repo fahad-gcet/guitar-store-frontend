@@ -3,11 +3,9 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as cartActions from '../../actions/cartActions';
 
-
 class SingleProduct extends React.Component {
   constructor(props, context) {
     super(props, context);
-
     this.addProductToCart = this.addProductToCart.bind(this);
   }
 
