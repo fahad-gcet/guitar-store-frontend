@@ -2,11 +2,36 @@ import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as cartActions from '../../actions/cartActions';
+import axios from "axios";
+import {PRODUCTS_URL} from "../../config";
+import {spinnerService} from "@chevtek/react-spinners";
 
 class SingleProduct extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      productData: {
+        name: "",
+        price: "",
+        image_url: "",
+        description: ""
+      }
+    };
     this.addProductToCart = this.addProductToCart.bind(this);
+  }
+
+  componentDidMount() {
+    const {id} = this.props.params;
+    spinnerService.show('mySpinner');
+    axios.get(PRODUCTS_URL + id + '/').then((data) => {
+      this.setState({productData: data.data});
+      spinnerService.hide('mySpinner');
+    }).catch(
+      error => {
+        spinnerService.hide('mySpinner');
+        throw(error);
+      }
+    );
   }
 
   addProductToCart(event) {
@@ -14,13 +39,14 @@ class SingleProduct extends React.Component {
   }
 
   render() {
+    const {productData} = this.state;
     return (
       <div>
         <div className="row wow fadeIn">
 
           <div className="col-md-6 mb-4">
             <img
-              src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg"
+              src={productData.image_url}
               className="img-fluid" alt=""/>
           </div>
 
@@ -40,23 +66,14 @@ class SingleProduct extends React.Component {
 
               <p className="lead">
               <span className="mr-1">
-                <del>$200</del>
+                <del>$1000</del>
               </span>
-                <span>$100</span>
+                <span>${productData.price}</span>
               </p>
 
               <p className="lead font-weight-bold">Description</p>
 
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                dolor suscipit libero eos atque quia ipsa sint voluptatibus!
-                Beatae sit assumenda asperiores iure at maxime atque
-                repellendus
-                maiores quia sapiente.Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Et
-                dolor suscipit libero eos atque quia ipsa sint voluptatibus!
-                Beatae sit assumenda asperiores iure at maxime atque
-                repellendus
-                maiores quia sapiente.</p>
+              <p>{productData.description}</p>
 
               {/*<form className="d-flex justify-content-left">*/}
               <input type="number" value="1" aria-label="Search"

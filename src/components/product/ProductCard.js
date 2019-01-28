@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 
 const ProductCard = (product) => {
   return (
-    <Link to="product/1">
+    <Link to={`product/${product.product.id}`}>
       <div className="card">
         <div className="view overlay">
           <img
@@ -17,11 +17,11 @@ const ProductCard = (product) => {
 
         <div className="card-body text-center">
           <span  className="grey-text">
-            <h5>{product.product.name}</h5>
+            <h5>{product.product.brand_name}</h5>
           </span>
           <h5>
             <strong>
-              <span href="" className="dark-grey-text">{product.id}
+              <span href="" className="dark-grey-text">{product.product.name}
                 <span className="badge badge-pill danger-color">NEW</span>
               </span>
             </strong>
