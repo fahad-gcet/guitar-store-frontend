@@ -4,5 +4,8 @@ export default {
   },
   cart: {
     cartCount: 0
+  },
+  products: {
+    data: []
   }
 };

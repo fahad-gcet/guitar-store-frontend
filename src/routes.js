@@ -4,8 +4,8 @@ import {Route, IndexRoute} from 'react-router';
 import App from './components/App';
 import Contact from './components/contact/Contact';
 import Cart from './components/cart/Cart';
-import Product from './components/product/Product';
 import SingleProduct from './components/product/SingleProduct';
+import Product from "./components/product/Product";
 
 
 export default (

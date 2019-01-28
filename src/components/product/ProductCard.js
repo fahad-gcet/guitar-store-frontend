@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-const ProductCard = () => {
+const ProductCard = (product) => {
   return (
     <Link to="product/1">
       <div className="card">
         <div className="view overlay">
           <img
-            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg"
+            src={product.product.image_url}
             className="card-img-top" alt=""/>
           <span>
             <div
@@ -17,24 +17,28 @@ const ProductCard = () => {
 
         <div className="card-body text-center">
           <span  className="grey-text">
-            <h5>Shirt</h5>
+            <h5>{product.product.name}</h5>
           </span>
           <h5>
             <strong>
-              <span href="" className="dark-grey-text">Denim shirt
+              <span href="" className="dark-grey-text">{product.id}
                 <span className="badge badge-pill danger-color">NEW</span>
               </span>
             </strong>
           </h5>
 
           <h4 className="font-weight-bold blue-text">
-            <strong>120$</strong>
+            <strong>{product.product.price}$</strong>
           </h4>
 
         </div>
       </div>
     </Link>
   );
+};
+
+ProductCard.propTypes = {
+  product: PropTypes.object.isRequired
 };
 
 export default ProductCard;

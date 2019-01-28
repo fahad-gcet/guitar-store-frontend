@@ -5,6 +5,7 @@ import {Spinner} from '@chevtek/react-spinners';
 
 import TopBar from './topbar/TopBar';
 import Footer from './footer/Footer';
+import spinnerImage from '../images/ajaxloader.gif';
 
 
 class App extends React.Component {
@@ -19,7 +20,7 @@ class App extends React.Component {
         </main>
         <Footer/>
         <Spinner name="mySpinner">
-          Loading...
+          <img src={spinnerImage} className="spinnerImage"/>
         </Spinner>
       </div>
     );

@@ -5,6 +5,11 @@ body,
   height: 100%;
 }
 
+.overlay {
+  width: 50%;
+  left: 20%;
+}
+
 /* Half Page Carousel itself*/
 .carousel {
   height: 50%;
@@ -33,4 +38,11 @@ body,
 
 main {
   margin-top: 6em;
+}
+
+.spinnerImage {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 9999;
 }

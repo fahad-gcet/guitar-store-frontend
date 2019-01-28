@@ -1,16 +1,46 @@
-import React from 'react';
-import ProductList from './ProductList';
+import React, {PropTypes} from 'react';
 
+import ProductCard from './ProductCard';
+import * as productsActions from "../../actions/productsActions";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as cartActions from "../../actions/cartActions";
 
 class Product extends React.Component {
+  componentDidMount() {
+    const {dispatch} = this.props;
+    dispatch(productsActions.getProducts());
+  }
+
   render() {
     return (
       <div>
-        <h2>All Guitars</h2>
-        <ProductList/>
+        <section className="text-center mb-4">
+          <div className="row">
+            {this.props.products.map(product =>
+              <div className="col-lg-3 col-md-6 mb-4">
+                <ProductCard key={product.id} product={product}/>
+              </div>
+            )}
+          </div>
+        </section>
       </div>
     );
   }
 }
 
-export default Product;
+
+Product.propTypes = {
+  dispatch: PropTypes.object.isRequired,
+  products: PropTypes.object.isRequired
+};
+
+
+function mapStateToProps(state, ownProps) {
+  return {
+    products: state.products.data
+  };
+}
+
+
+export default connect(mapStateToProps)(Product);
