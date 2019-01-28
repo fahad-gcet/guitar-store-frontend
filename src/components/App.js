@@ -19,7 +19,7 @@ class App extends React.Component {
         </main>
         <Footer/>
         <Spinner name="mySpinner">
-          <img src="../images/spinnerImage.gif" className="spinnerImage"/>
+          <div className="spinner"></div>
         </Spinner>
       </div>
     );
