@@ -75,16 +75,12 @@ class SingleProduct extends React.Component {
 
               <p>{productData.description}</p>
 
-              {/*<form className="d-flex justify-content-left">*/}
-              <input type="number" value="1" aria-label="Search"
-                     className="form-control"/>
               <button onClick={this.addProductToCart}
                       className="btn btn-primary btn-md my-0 p">Add
                 to cart
                 <i className="fas fa-shopping-cart ml-1"></i>
               </button>
 
-              {/*</form>*/}
 
             </div>
 
@@ -115,7 +111,8 @@ class SingleProduct extends React.Component {
 }
 
 SingleProduct.propTypes = {
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+
 };
 
 function mapStateToProps(state, ownProps) {
