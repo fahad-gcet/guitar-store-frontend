@@ -50,3 +50,11 @@ main {
   height: 100%;
   z-index: 1000;
 }
+
+.loginForm {
+  margin-bottom: 40%;
+}
+
+.hidden {
+  display: none;
+}

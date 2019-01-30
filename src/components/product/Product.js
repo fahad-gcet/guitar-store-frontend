@@ -19,7 +19,7 @@ class Product extends React.Component {
           <div className="row">
             {this.props.products.map(product =>
               <div className="col-lg-3 col-md-6 mb-4">
-                <ProductCard key={product.id} product={product}/>
+                <ProductCard product={product}/>
               </div>
             )}
           </div>
@@ -31,8 +31,8 @@ class Product extends React.Component {
 
 
 Product.propTypes = {
-  dispatch: PropTypes.object.isRequired,
-  products: PropTypes.object.isRequired
+  dispatch: PropTypes.func,
+  products: PropTypes.array.isRequired
 };
 
 

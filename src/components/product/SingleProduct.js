@@ -111,7 +111,7 @@ class SingleProduct extends React.Component {
 }
 
 SingleProduct.propTypes = {
-  actions: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 
 };
 

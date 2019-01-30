@@ -4,17 +4,17 @@ import {IndexLink, Link} from 'react-router';
 import {APP_NAME} from '../../config';
 import ProductSearchForm from './ProductSearchForm';
 import CartIcon from './CartIcon';
+import {connect} from "react-redux";
 
 
-const TopBar = () => (
+const TopBar = (props) => (
   <div>
     <nav
       className="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
       <div className="container">
-
         {/*Brand*/}
         <IndexLink className="navbar-brand waves-effect" to="/"><strong
-          className="blue-text">{APP_NAME}</strong></IndexLink>
+          className="blue-text">{props.isLoggedIn}</strong></IndexLink>
 
         {/*Collapse*/}
         <button className="navbar-toggler" type="button" data-toggle="collapse"
@@ -45,6 +45,12 @@ const TopBar = () => (
             <li className="nav-item">
               <CartIcon cartCount={0}/>
             </li>
+            <li
+              className={`nav-item ${props.isLoggedIn ? 'show' : 'hidden'}`}>
+              <Link to="/login" activeClassName="active">
+                <button className="btn btn-primary btn-sm">Login</button>
+              </Link>
+            </li>
           </ul>
 
         </div>
@@ -53,5 +59,14 @@ const TopBar = () => (
   </div>
 );
 
+TopBar.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired
+};
 
-export default TopBar;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.user.isLoggedIn
+  };
+};
+
+export default connect(mapStateToProps)(TopBar);

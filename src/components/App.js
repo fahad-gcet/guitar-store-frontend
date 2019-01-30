@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Spinner} from '@chevtek/react-spinners';
+import {connect} from "react-redux";
 
 
 import TopBar from './topbar/TopBar';
@@ -26,8 +27,15 @@ class App extends React.Component {
   }
 }
 
-App.propTypes = {
-  children: PropTypes.object.isRequired
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.user.isLoggedIn
+  };
 };
 
-export default App;
+App.propTypes = {
+  children: PropTypes.object.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
+};
+
+export default connect(mapStateToProps)(App);

@@ -16,7 +16,7 @@ const ProductCard = (product) => {
         </div>
 
         <div className="card-body text-center">
-          <span  className="grey-text">
+          <span className="grey-text">
             <h5>{product.product.brand_name}</h5>
           </span>
           <h5>
