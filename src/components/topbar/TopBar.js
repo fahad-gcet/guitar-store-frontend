@@ -46,7 +46,7 @@ const TopBar = (props) => (
               <CartIcon cartCount={0}/>
             </li>
             <li
-              className={`nav-item ${props.isLoggedIn ? 'show' : 'hidden'}`}>
+              className={`nav-item ${props.isLoggedIn ? 'hidden' : ''}`}>
               <Link to="/login" activeClassName="active">
                 <button className="btn btn-primary btn-sm">Login</button>
               </Link>
