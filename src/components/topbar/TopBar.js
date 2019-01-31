@@ -48,7 +48,7 @@ const TopBar = (props) => (
             <li
               className={`nav-item ${props.isLoggedIn ? 'hidden' : ''}`}>
               <Link to="/login" activeClassName="active">
-                <button className="btn btn-primary btn-sm">Login</button>
+                <button className="btn btn-danger btn-sm">Login</button>
               </Link>
             </li>
           </ul>

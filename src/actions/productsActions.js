@@ -10,10 +10,13 @@ const getProductsSuccess = (data) => {
   };
 };
 
-export const getProducts = () => {
+export const getProducts = (next = "") => {
+  if (!next) {
+    next = PRODUCTS_URL;
+  }
   return function (dispatch) {
     spinnerService.show('mySpinner');
-    return axios.get(PRODUCTS_URL).then((data) => {
+    return axios.get(next).then((data) => {
       dispatch(getProductsSuccess(data));
       spinnerService.hide('mySpinner');
     }).catch(error => {

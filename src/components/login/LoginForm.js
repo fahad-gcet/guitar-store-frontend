@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {bindActionCreators} from 'redux';
+
+import * as userActions from "../../actions/userActions";
 
 
 class LoginForm extends React.Component {
@@ -16,6 +19,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.actions.initiateAuth(this.state.customerID);
   }
 
   handleChange(event) {
@@ -65,10 +69,17 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(userActions, dispatch)
+  };
+};
+
 LoginForm.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  isOTPSent: PropTypes.bool.isRequired
+  isOTPSent: PropTypes.bool.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 
-export default connect(mapStateToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

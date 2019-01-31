@@ -10,10 +10,10 @@ const initiateAuthSuccess = (data) => {
   };
 };
 
-export const initiateAuth = () => {
+export const initiateAuth = (customerID) => {
   return function (dispatch) {
     spinnerService.show('mySpinner');
-    return axios.get(PRODUCTS_URL).then((data) => {
+    return axios.get(INITIATE_AUTH_URL).then((data) => {
       dispatch(initiateAuthSuccess(data));
       spinnerService.hide('mySpinner');
     }).catch(error => {

@@ -4,12 +4,26 @@ import ProductCard from './ProductCard';
 import * as productsActions from "../../actions/productsActions";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import * as cartActions from "../../actions/cartActions";
 
 class Product extends React.Component {
+  constructor(props) {
+    super(props);
+    this.loadMoreProducts = this.loadMoreProducts.bind(this);
+  }
+
+
   componentDidMount() {
-    const {dispatch} = this.props;
-    dispatch(productsActions.getProducts());
+    if (this.props.products.length === 0) {
+      this.loadProducts();
+    }
+  }
+
+  loadProducts() {
+    this.props.actions.getProducts();
+  }
+
+  loadMoreProducts() {
+    this.props.actions.getProducts(this.props.next);
   }
 
   render() {
@@ -24,6 +38,11 @@ class Product extends React.Component {
             )}
           </div>
         </section>
+        <div className="text-center">
+          <button className="btn btn-primary"
+                  onClick={this.loadMoreProducts}>Load More
+          </button>
+        </div>
       </div>
     );
   }
@@ -31,16 +50,24 @@ class Product extends React.Component {
 
 
 Product.propTypes = {
-  dispatch: PropTypes.func,
-  products: PropTypes.array.isRequired
+  products: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired,
+  next: PropTypes.string
 };
 
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
-    products: state.products.data
+    products: state.products.data,
+    next: state.products.next
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(productsActions, dispatch)
   };
 }
 
 
-export default connect(mapStateToProps)(Product);
+export default connect(mapStateToProps, mapDispatchToProps)(Product);
