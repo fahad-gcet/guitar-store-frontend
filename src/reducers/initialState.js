@@ -1,8 +1,7 @@
 export default {
   user: {
     authToken: "",
-    isLoggedIn: false,
-    isOTPSent: false
+    isLoggedIn: false
   },
   cart: {
     cartCount: 0

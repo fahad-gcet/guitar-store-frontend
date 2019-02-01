@@ -13,13 +13,21 @@ class LoginForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       customerID: "",
-      OTP: ""
+      OTP: "",
+      isOTPSent: false
     };
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.actions.initiateAuth(this.state.customerID);
+    if (!this.state.isOTPSent) {
+      this.props.actions.initiateAuth(this.state.customerID);
+      this.setState(prevState => ({
+        isOTPSent: true
+      }));
+    } else {
+      this.props.actions.finalizeAuth(this.state.customerID);
+    }
   }
 
   handleChange(event) {
@@ -28,16 +36,22 @@ class LoginForm extends React.Component {
     this.setState(change);
   }
 
+  componentWillUnmount() {
+
+  }
+
 
   render() {
     const customerIDInput = <input type="text"
+                                   autoComplete="off"
                                    value={this.state.customerID}
                                    className="form-control mb-4"
                                    placeholder="Customer ID"
                                    name="customerID"
                                    onChange={this.handleChange}/>;
 
-    const OTPInput = <input type="number"
+    const OTPInput = <input type="text"
+                            autoComplete="off"
                             value={this.state.OTP}
                             className="form-control mb-4"
                             placeholder="One Time Password"
@@ -51,10 +65,10 @@ class LoginForm extends React.Component {
 
           <p className="h4 mb-4">Sign in</p>
 
-          {this.props.isOTPSent ? OTPInput : customerIDInput}
+          {this.state.isOTPSent ? OTPInput : customerIDInput}
 
-          <button className="btn btn-info btn-block my-4" type="submit">Send
-            OTP
+          <button className="btn btn-info btn-block my-4" type="submit">
+            {this.state.isOTPSent ? "Login" : "Send OTP"}
           </button>
         </form>
       </div>
@@ -64,8 +78,7 @@ class LoginForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.user.isLoggedIn,
-    isOTPSent: state.user.isOTPSent
+    isLoggedIn: state.user.isLoggedIn
   };
 };
 
@@ -77,7 +90,6 @@ const mapDispatchToProps = (dispatch) => {
 
 LoginForm.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  isOTPSent: PropTypes.bool.isRequired,
   actions: PropTypes.object.isRequired
 };
 

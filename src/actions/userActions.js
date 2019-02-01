@@ -30,11 +30,12 @@ const finalizeAuthSuccess = (data) => {
   };
 };
 
-export const finalizeAuth = () => {
+export const finalizeAuth = (customerID, OTP) => {
   return function (dispatch) {
     spinnerService.show('mySpinner');
     return axios.get(FINALIZE_AUTH_URL).then((data) => {
       dispatch(finalizeAuthSuccess(data));
+      localStorage.setItem('userToken', 'dummyToken');
       spinnerService.hide('mySpinner');
     }).catch(error => {
       spinnerService.hide('mySpinner');
