@@ -36,13 +36,10 @@ class LoginForm extends React.Component {
     this.setState(change);
   }
 
-  componentWillUnmount() {
-
-  }
-
 
   render() {
     const customerIDInput = <input type="text"
+                                   required
                                    autoComplete="off"
                                    value={this.state.customerID}
                                    className="form-control mb-4"
@@ -51,6 +48,7 @@ class LoginForm extends React.Component {
                                    onChange={this.handleChange}/>;
 
     const OTPInput = <input type="text"
+                            required
                             autoComplete="off"
                             value={this.state.OTP}
                             className="form-control mb-4"

@@ -58,3 +58,7 @@ main {
 .hidden {
   display: none;
 }
+
+.completePurchaseBtn {
+  width: 100%;
+}
