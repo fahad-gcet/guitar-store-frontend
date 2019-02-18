@@ -13,14 +13,14 @@ export default function jobsReducer(state = initialState.jobs, action) {
       }
       return newState;
     case types.EDIT_JOB:
-      const newEditedState = Object.assign([], state);
+      const newEditedState = [ ...state ];
       const editedId = action.data.id;
       const newValue = action.data.newValue;
       const indexOfJobToEdit = state.findIndex(job => {
         return job.id == editedId
       });
       if (indexOfJobToEdit !== -1) {
-        newEditedState[indexOfJobToEdit].name = newValue;
+        newEditedState[indexOfJobToEdit] = { id: parseInt(editedId), name: newValue}
       }
       return newEditedState;
     default:
