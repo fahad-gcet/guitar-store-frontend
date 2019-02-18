@@ -2,6 +2,8 @@ import axios from 'axios';
 import * as types from './actionTypes';
 import {INITIATE_AUTH_URL, FINALIZE_AUTH_URL, PRODUCTS_URL} from "../config";
 import {spinnerService} from '@chevtek/react-spinners';
+import {hashHistory} from 'react-router';
+
 
 const initiateAuthSuccess = (data) => {
   return {
@@ -35,6 +37,7 @@ export const finalizeAuth = (customerID, OTP) => {
     spinnerService.show('mySpinner');
     return axios.get(FINALIZE_AUTH_URL).then((data) => {
       dispatch(finalizeAuthSuccess(data));
+      hashHistory.push('/');
       localStorage.setItem('userToken', 'dummyToken');
       spinnerService.hide('mySpinner');
     }).catch(error => {

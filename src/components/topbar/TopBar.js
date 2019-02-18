@@ -36,6 +36,10 @@ const TopBar = (props) => (
               <Link className="nav-link waves-effect"
                     to="/contact" activeClassName="active">Contact</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link waves-effect"
+                    to="/job" activeClassName="active">Jobs</Link>
+            </li>
           </ul>
 
           <ProductSearchForm/>

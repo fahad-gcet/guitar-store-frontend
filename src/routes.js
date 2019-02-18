@@ -7,6 +7,7 @@ import Cart from './components/cart/Cart';
 import SingleProduct from './components/product/SingleProduct';
 import Product from "./components/product/Product";
 import Login from "./components/login/Login";
+import Job from "./components/job/Job";
 
 
 export default (
@@ -16,5 +17,6 @@ export default (
     <Route path="cart" component={Cart}/>
     <Route path="product/:id" component={SingleProduct}/>
     <Route path="login" component={Login}/>
+    <Route path="job" component={Job}/>
   </Route>
 );

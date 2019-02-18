@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      customerID: "",
+      customerEmail: "",
       OTP: "",
       isOTPSent: false
     };
@@ -21,12 +21,12 @@ class LoginForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     if (!this.state.isOTPSent) {
-      this.props.actions.initiateAuth(this.state.customerID);
+      this.props.actions.initiateAuth(this.state.customerEmail);
       this.setState(prevState => ({
         isOTPSent: true
       }));
     } else {
-      this.props.actions.finalizeAuth(this.state.customerID);
+      this.props.actions.finalizeAuth(this.state.customerEmail);
     }
   }
 
@@ -38,14 +38,14 @@ class LoginForm extends React.Component {
 
 
   render() {
-    const customerIDInput = <input type="text"
-                                   required
-                                   autoComplete="off"
-                                   value={this.state.customerID}
-                                   className="form-control mb-4"
-                                   placeholder="Customer ID"
-                                   name="customerID"
-                                   onChange={this.handleChange}/>;
+    const customerEmailInput = <input type="email"
+                                      required
+                                      autoComplete="off"
+                                      value={this.state.customerEmail}
+                                      className="form-control mb-4"
+                                      placeholder="Customer Email"
+                                      name="customerEmail"
+                                      onChange={this.handleChange}/>;
 
     const OTPInput = <input type="text"
                             required
@@ -63,7 +63,7 @@ class LoginForm extends React.Component {
 
           <p className="h4 mb-4">Sign in</p>
 
-          {this.state.isOTPSent ? OTPInput : customerIDInput}
+          {this.state.isOTPSent ? OTPInput : customerEmailInput}
 
           <button className="btn btn-info btn-block my-4" type="submit">
             {this.state.isOTPSent ? "Login" : "Send OTP"}

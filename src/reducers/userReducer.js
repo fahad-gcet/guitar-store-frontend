@@ -6,7 +6,9 @@ export default function userReducer(state = initialState.user, action) {
     case types.INITIATE_AUTH:
       return state;
     case types.FINALIZE_AUTH:
-      return state;
+      return Object.assign({}, state, {
+        isLoggedIn: true
+      });
     default:
       return state;
   }
